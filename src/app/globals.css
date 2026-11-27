@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --red: #c1440e;
+  --orange: #e77d11;
+  --saffron: #fcd12a;
+  --green: #1b5e20;
+  --purple: #4a148c;
+  --cream: #fff8e1;
+  --ink: #2a0f3d;
+}
+
+@layer base {
+  html {
+    background: var(--cream);
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  *,
+  *::before,
+  *::after {
+    font-style: normal !important;
+    font-synthesis: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display), cursive;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 0.9;
+  }
+
+  ::selection {
+    background: var(--saffron);
+    color: var(--ink);
+  }
+}
+
+@layer utilities {
+  .zellige {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .zellige::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--zellige-color, var(--red));
+    opacity: var(--zellige-opacity, 0.08);
+    -webkit-mask: url("/patterns/zellige.svg") repeat;
+    mask: url("/patterns/zellige.svg") repeat;
+    -webkit-mask-size: var(--zellige-size, 96px);
+    mask-size: var(--zellige-size, 96px);
+  }
+
+  .liquid-glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 248, 225, 0.62),
+      rgba(255, 248, 225, 0.28)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+      0 18px 50px rgba(42, 15, 61, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75),
+      inset 0 -1px 0 rgba(193, 68, 14, 0.12);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+  }
+
+  .arch {
+    border-radius: 999px 999px 28px 28px / 520px 520px 28px 28px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
